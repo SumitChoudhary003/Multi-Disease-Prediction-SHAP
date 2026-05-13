@@ -311,7 +311,7 @@ def _predict_single(disease, raw_input, user_id=None):
         return {
             'error': f'Model for {disease} not found'
         }, 404
-    model = artifact['model']
+    model = artifact
 
     if disease == 'diabetes':
      X = preprocess_input(model, raw_input)
@@ -475,10 +475,10 @@ def models_info():
         artifact = load_model(disease)
         if artifact:
             info[disease] = {
-                'model_name':    artifact.get('model_name',''),
-                'features':      artifact.get('feature_names',[]),
-                'classes':       artifact.get('classes',[]),
-                'model_results': artifact.get('model_results',[])
+                'model_name':    artifact.get('XGBoost'),
+                'features':     [],
+                'classes':       [],
+                'model_results': []
             }
         else:
             info[disease] = {'error': 'Model not trained yet'}
