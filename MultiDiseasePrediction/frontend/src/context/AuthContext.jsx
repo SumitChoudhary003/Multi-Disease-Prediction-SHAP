@@ -28,20 +28,34 @@ export function AuthProvider({ children }) {
   }, [token])
 
   const login = async (email, password) => {
-    const { data } = await axios.post('/api/auth/login', { email, password })
-    localStorage.setItem('medpredict_token', data.token)
-    setToken(data.token)
-    setUser(data.user)
-    return data
-  }
+  const { data } = await axios.post('/api/auth/login', { email, password })
+
+  localStorage.setItem('medpredict_token', data.token)
+
+  axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
+
+  const userRes = await axios.get('/api/auth/me')
+
+  setToken(data.token)
+  setUser(userRes.data)
+
+  return data
+ }
 
   const register = async (name, email, password) => {
-    const { data } = await axios.post('/api/auth/register', { name, email, password })
-    localStorage.setItem('medpredict_token', data.token)
-    setToken(data.token)
-    setUser(data.user)
-    return data
-  }
+  const { data } = await axios.post('/api/auth/register', { name, email, password })
+
+  localStorage.setItem('medpredict_token', data.token)
+
+  axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
+
+  const userRes = await axios.get('/api/auth/me')
+
+  setToken(data.token)
+  setUser(userRes.data)
+
+  return data
+ }
 
   const logout = () => {
     localStorage.removeItem('medpredict_token')
