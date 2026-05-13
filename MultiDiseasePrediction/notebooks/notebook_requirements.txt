@@ -1,0 +1,13 @@
+# Requirements for Jupyter Notebooks (Model Training)
+# Run: pip install -r notebook_requirements.txt
+
+jupyter==1.0.0
+notebook==7.2.0
+pandas==2.2.2
+numpy==1.26.4
+matplotlib==3.9.0
+seaborn==0.13.2
+scikit-learn==1.5.0
+xgboost==2.0.3
+shap==0.45.1
+ipywidgets==8.1.3
