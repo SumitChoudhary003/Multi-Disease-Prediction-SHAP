@@ -304,12 +304,13 @@ def me():
 # ─── Prediction Routes ────────────────────────────────────────────────────────
 def _predict_single(disease, raw_input, user_id=None):
 
-    model = load_model(disease)
+    artifact = load_model(disease)
 
-    if model is None:
+    if artifact is None:
         return {
             'error': f'Model for {disease} not found'
         }, 404
+    model = artifact['model']
 
     if disease == 'diabetes':
      X = preprocess_input(model, raw_input)
