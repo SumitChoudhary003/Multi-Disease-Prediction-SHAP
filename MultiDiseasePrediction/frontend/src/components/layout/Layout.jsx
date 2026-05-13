@@ -85,7 +85,7 @@ export default function Layout() {
         <div className="px-4 py-4 border-t border-slate-100">
           <div className="flex items-center gap-3 px-3 py-3 rounded-xl bg-slate-50">
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-              {user?.name?.[0]?.toUpperCase() || 'U'}
+              {(user?.name || user?.email || 'U')[0].toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold text-slate-800 truncate">{user?.name || 'User'}</p>
@@ -114,7 +114,7 @@ export default function Layout() {
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full" />
             </button>
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
-              {user?.name?.[0]?.toUpperCase() || 'U'}
+              {(user?.name || user?.email || 'U')[0].toUpperCase()}
             </div>
           </div>
         </header>
