@@ -17,7 +17,11 @@ import matplotlib.pyplot as plt
 
 # ─── App Setup ────────────────────────────────────────────────────────────────
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, 
+     supports_credentials=True,
+     resources={r"/api/*": {"origins": ["http://localhost:3000,"
+     "https://multi-disease-prediction-shap-2.onrender.com"]}}
+    )
 
 app.config['SECRET_KEY'] = 'your-secret-key-change-in-production'
 app.config['JWT_SECRET_KEY'] = 'jwt-secret-change-in-production'
