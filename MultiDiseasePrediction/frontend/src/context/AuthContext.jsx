@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
   // Attach token to every request
   useEffect(() => {
     if (token) {
-  axios.defaults.baseURL = 'https://multi-disease-prediction-shap-2.onrender.com'
+  axios.defaults.baseURL = 'https://multi-disease-prediction-shap.onrender.com'
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
       // Verify token still valid
       axios.get('/api/auth/me')
@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
         .finally(() => setLoading(false))
     }else {
 
-  axios.defaults.baseURL = 'https://multi-disease-prediction-shap-2.onrender.com'
+  axios.defaults.baseURL = 'https://multi-disease-prediction-shap.onrender.com'
 
   delete axios.defaults.headers.common['Authorization']
   setLoading(false)
